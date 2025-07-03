@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contato</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+    label, input, textarea, button {
+      font-size: 16px;
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background: #1DB954;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bem-vindo! Por favor, preencha o formulário abaixo</h1>
+
+  <form id="formContato">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    document.getElementById("formContato").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
+
+      if (!nome || !email || !mensagem) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+      }
+
+      // Aqui você pode tratar o envio dos dados para servidor, API, etc.
+
+      // Armazena os dados no localStorage para usar depois, se quiser
+      localStorage.setItem("nomeUsuario", nome);
+
+      alert("Mensagem enviada com sucesso!");
+
+      // Redireciona para a página inicial
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
